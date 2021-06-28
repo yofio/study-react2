@@ -6,7 +6,7 @@ const style = {
   backgroundColor: "khaki"
 };
 export const ChiledArea = memo((props) => {
-  const { open } = props;
+  const { open, onClickClose } = props;
   console.log("ChileAreaがレンダリングされた");
 
   const date = [...Array(2000).keys()];
@@ -19,6 +19,7 @@ export const ChiledArea = memo((props) => {
       {open ? (
         <div style={style}>
           <p>子コンポーネント</p>
+          <button onClick={onClickClose}>閉じる</button>
         </div>
       ) : null}
     </>
