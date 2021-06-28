@@ -1,9 +1,11 @@
+import { memo } from "react";
+
 const style = {
   width: "100%",
   height: "200px",
   backgroundColor: "khaki"
 };
-export const ChiledArea = (props) => {
+export const ChiledArea = memo((props) => {
   const { open } = props;
   console.log("ChileAreaがレンダリングされた");
 
@@ -21,4 +23,4 @@ export const ChiledArea = (props) => {
       ) : null}
     </>
   );
-};
+});
