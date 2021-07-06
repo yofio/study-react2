@@ -3,8 +3,10 @@ import { SerachInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
 import { useLocation } from "react-router-dom";
 import { SecondaryButton } from "../atoms/button/SecondaryButton";
-import { UserContext } from "../../providers/Userprovider";
-import { useContext } from "react";
+// import { UserContext } from "../../providers/Userprovider";
+// import { useContext } from "react";
+import { useRecoilState } from "recoil";
+import { userState } from "../../store/userState";
 
 const users = [...Array(10).keys()].map((val) => {
   return {
@@ -21,7 +23,8 @@ const users = [...Array(10).keys()].map((val) => {
 });
 
 export const Users = () => {
-  const { userInfo, setUserinfo } = useContext(UserContext);
+  // const { userInfo, setUserinfo } = useContext(UserContext);
+  const [userInfo, setUserinfo] = useRecoilState(userState);
 
   const onClickSwich = () => setUserinfo({ isAdmin: !userInfo.isAdmin });
 
