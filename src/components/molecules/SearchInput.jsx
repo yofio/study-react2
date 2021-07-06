@@ -1,8 +1,9 @@
+import { memo } from "react";
 import styled from "styled-components";
 import { PrimaryButton } from "../atoms/button/PrimaryButton";
 import { Input } from "../atoms/input/Input";
 
-export const SerachInput = () => {
+export const SerachInput = memo(() => {
   return (
     <SContainer>
       <Input placeholder="検索条件を入力" />
@@ -11,7 +12,7 @@ export const SerachInput = () => {
       </SButtonWrapper>
     </SContainer>
   );
-};
+});
 
 const SContainer = styled.div`
   display: flex;

@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { SerachInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
 import { useLocation } from "react-router-dom";
+import { SecondaryButton } from "../atoms/button/SecondaryButton";
+import { UserContext } from "../../providers/Userprovider";
+import { useContext } from "react";
 
 const users = [...Array(10).keys()].map((val) => {
   return {
@@ -18,12 +21,18 @@ const users = [...Array(10).keys()].map((val) => {
 });
 
 export const Users = () => {
+  const { userInfo, setUserinfo } = useContext(UserContext);
+
+  const onClickSwich = () => setUserinfo({ isAdmin: !userInfo.isAdmin });
+
   const { state } = useLocation();
   console.log(state);
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
       <SerachInput />
+      <br />
+      <SecondaryButton onClick={onClickSwich}>切り替え</SecondaryButton>
       <SUserArea>
         {users.map((user) => (
           <UserCard key={user.id} user={user} />
